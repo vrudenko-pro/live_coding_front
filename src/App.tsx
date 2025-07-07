@@ -1,34 +1,31 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { useEffect } from "react";
 import "./App.css";
+import { AuthPage } from "../src/pages/AuthPage";
+import { LoginPage } from "./pages/LoginPage";
+import { Refresh } from "./pages/Refresh";
+import { Routes, Route } from "react-router-dom";
+import { Layout } from "./components/Layout";
+
+// import { checkIsAuth, getMe } from "../src/redux/features/auth/authSlice";
+import { useDispatch } from "react-redux";
+import { MainPage } from "./pages/MainPage";
 
 const App = () => {
-  const [count, setCount] = useState(0);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // dispatch(getMe());
+  }, [dispatch]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/register" element={<AuthPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/refresh" element={<Refresh />} />
+      </Routes>
+    </Layout>
   );
 };
 

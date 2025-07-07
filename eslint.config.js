@@ -57,7 +57,7 @@ export default tseslint.config(
         { namedComponents: "arrow-function" },
       ],
       "react/self-closing-comp": ["error", { component: true, html: true }],
-      "max-lines": ["warn", { max: 124 }],
+      "max-lines": ["warn", { max: 200 }],
       "max-params": ["error", 3],
     },
   }
